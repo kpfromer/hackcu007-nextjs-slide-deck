@@ -74,7 +74,7 @@ It should print something like:
 7.4.3
 ``` -->
 
-# :computer: What We Will Learn About
+# :computer: What We Will Use
 
 - Next.js
   - React.js
@@ -506,25 +506,19 @@ We are going to load in the MDX file using the code provided.
 
 ---
 
-- Any route like `/blog/1`, `/blog/abc`, etc. will be matched by `pages/blog/[id].js`. The matched
-  path parameter will be sent as a query parameter (called `id`) to the page.
+We have many mdx files and want pages to be generated for each!
+
+By creating a file `pages/blog/[id].js` (`[id].js`) next.js will match pages like `/blog/1`,
+`/blog/abc` to that file.
+
+The matched path parameter will be sent as a query parameter (called `id`) to the page.
+
+---
 
 For example, if a user when to `/blog/first-blog-post` the `query` object look like:
 
 ```json
 { "id": "first-blog-post" }
-```
-
----
-
-# You can also chain multiple dynamic routes
-
-Meaning you can have files named: `pages/post/[pid]/[comment].js`
-
-If a user when to `/post/reddit-post-id/cool-comment` the `query` object would look like:
-
-```js
-{ "pid": "reddit-post-id", "comment": "cool-comment" }
 ```
 
 ---
@@ -535,6 +529,7 @@ https://nextjs.org/docs/routing/dynamic-routes
 
 # `getStaticPaths`
 
+- Tell's Next.js what pages need to be generated.
 - Only run on backend like `getStaticProps`
 - The `paths` key will tell Next.js what pages need to be generated at **build** time.
 
@@ -669,6 +664,25 @@ Now try creating another mdx file (called `mdx-file-name.mdx`) and then go to
 
 ---
 
+# Overview
+
+- `getStaticProps` to fetch the data for each blog post.
+- `getStaticPaths` to generate a blog post page for each MDX file.
+  - Used in conjunction with Next.js dynamic routes (aka files with brackets: `[id].js`)
+- `next-mdx-remote` to render markdown
+- `luxon` to handle dates
+- `gray-matter` to get metadata.
+
+---
+
+# Behind the Scenes
+
+- We were writing React.js code
+- Used tailwindcss for styling
+- npm for package/library management (`package.json`).
+
+---
+
 # Aside
 
 ---
@@ -710,7 +724,7 @@ module.exports = {
 };
 ```
 
-```js subtitle="Purge css used in these files."
+```js subtitle="Purge css used in these files and add typography."
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
@@ -720,7 +734,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
 ```
 
@@ -807,3 +821,6 @@ export default MyApp;
 GitHub: [kpfromer](https://github.com/kpfromer)
 
 Website: [kpfromer.com](http://kpfromer.com/)
+
+Slide deck:
+[github.com/kpfromer/hackcu007-nextjs-slide-deck](https://github.com/kpfromer/hackcu007-nextjs-slide-deck)
