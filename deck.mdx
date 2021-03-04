@@ -1,0 +1,809 @@
+import { Image, Head } from 'mdx-deck';
+import { CodeSurfer } from 'code-surfer';
+import 'prismjs/components/prism-jsx';
+import { theme as myTheme } from './theme';
+
+export const theme = myTheme;
+
+<!--
+
+// export const theme = myTheme;
+
+import { CodeSurfer } from "code-surfer";
+export const theme = myTheme;
+
+
+import { poppins as myTheme } from "@mdx-deck/themes";
+-->
+
+# Next.JS - Making a Blog Site
+
+## :wave: Hello!
+
+### My Name is Kyle Pfromer
+
+---
+
+# What you'll need :ballot_box_with_check:
+
+- [Node.js v12 or above](https://nodejs.org/en/download/package-manager/)
+  - **You don't need to install it for this demo**
+  - I recommend you install it locally for an large project
+- Basic understanding of HTML / CSS
+- Basic JavaScript understanding - or any other language (JS is not _to_ bad)
+
+---
+
+# What will we be building
+
+https://nextjs-basic-starter.vercel.app/
+
+## A blog site!
+
+---
+
+<iframe src="https://nextjs-basic-starter.vercel.app" width="80%" height="1000" />
+
+---
+
+<!-- ---
+
+![Blog Site](/blog-site.png)
+
+---
+
+![Blog Post](/blog-post.png) -->
+
+<!-- ---
+
+# `npm` and `npx`
+
+We first need to make sure `npm` and `npx` works.
+
+To do so run:
+
+```bash
+npm -v
+npx -v
+```
+
+It should print something like:
+
+```
+7.4.3
+7.4.3
+``` -->
+
+# :computer: What We Will Learn About
+
+- Next.js
+  - React.js
+- Tailwindcss
+- MDX / Markdown
+
+---
+
+# Let's get started!
+
+Open this link:
+
+https://codesandbox.io/s/nextjs-starter-ktitv
+
+The source code is located here:
+
+https://github.com/kpfromer/nextjs-basic-starter
+
+<!-- ---
+
+# Getting Started
+
+The source code is located here: https://github.com/kpfromer/nextjs-basic-starter
+
+To **install** run
+
+```bash
+npx create-next-app nextjs-blog
+  --use-npm
+  --example "https://github.com/kpfromer/nextjs-basic-starter/tree/main/start"
+```
+
+Then `cd nextjs-blog` and `npm start`. The server should launch at `localhost:3000` -->
+
+---
+
+![Starter](/starter.png)
+
+<Notes>
+
+Should look like image.
+
+</Notes>
+
+---
+
+<!-- See minor changes to site -->
+
+<CodeSurfer>
+
+```jsx file=./code/homepage/one.js title="pages/index.js" subtitle="The start code for the homepage."
+
+```
+
+```jsx file=./code/homepage/two.js subtitle="Let's change the title to HackCU 007"
+
+```
+
+</CodeSurfer>
+
+---
+
+# Check out the page!
+
+It should have changed.
+
+---
+
+# Let's write a bit about ourselves.
+
+---
+
+<!--
+1. Show initial code
+2. remove bad code (footer, grid)
+3. Update the title / description
+4. add image
+-->
+
+<CodeSurfer>
+
+```jsx file=./code/homepage/two.js title="pages/index.js"
+
+```
+
+```jsx file=./code/homepage/three.js subtitle="Remove cruft"
+
+```
+
+```jsx file=./code/homepage/four.js subtitle="Update the title and description"
+
+```
+
+```jsx file=./code/homepage/five.js subtitle="Add the Image (copy image to /public)"
+
+```
+
+</CodeSurfer>
+
+<Notes>
+
+1. Show initial code
+2. remove grid and footer
+3. Update the title / description - Also change wrapping `div` and `main`
+4. add image (import and file)
+
+</Notes>
+
+---
+
+# Now we should create another page
+
+Let us build our first blog post!
+
+---
+
+<!--
+TODO: Create blog post page /page/blog/first.js
+
+Then other code section create a link
+-->
+
+<CodeSurfer>
+
+```jsx file=./code/newpage/1.js title="pages/first.js" subtitle="Barebones page"
+
+```
+
+```jsx file=./code/newpage/2.js subtitle="Copy code from home page"
+
+```
+
+```jsx file=./code/newpage/3.js subtitle="Add title"
+
+```
+
+```jsx file=./code/newpage/4.js subtitle="Add the date element"
+
+```
+
+```jsx file=./code/newpage/5.js subtitle="Add a basic body"
+
+```
+
+</CodeSurfer>
+
+<!-- TODO: add link back to home page -->
+
+<Notes>
+
+Firstly create the `blog` folder
+
+then create the file `blog/first.js`
+
+1. We create a barebones page
+2. Copy the structure from home page
+3. Change the title of page.
+4. Add the date using luxon
+5. And add body to display (no sytling!)
+
+**There's no styling**
+
+</Notes>
+
+---
+
+# This feels slow
+
+I would hate to do this for every page. Luckily we don't have to! We can use **MDX**.
+
+---
+
+# What is MDX?
+
+_Taken from MDX site:_
+
+> MDX is an authorable format that lets you seamlessly write JSX in your Markdown documents. You can
+> import components, such as interactive charts or alerts, and embed them within your content. This
+> makes writing long-form content with components a blast 🚀.
+
+---
+
+- ❤️ **Powerful:** MDX blends markdown and JSX syntax to fit perfectly in JSX-based projects.
+- 💻 **Everything is a component:** Import JSX components and render them directly in your MDX
+  document.
+- 🔧 **Customizable:** Decide which component is rendered for each markdown element.
+- 📚 **Markdown-based:** The simplicity and elegance of Markdown remains, you interleave JSX only
+  when you want to.
+- 🔥 **Blazingly blazing fast:** MDX has no runtime, all compilation occurs during the build stage.
+
+---
+
+# In other words
+
+A more customizable markdown.
+
+---
+
+# Well what's markdown?
+
+If you have used latex, it's like a much simplier version of that (no math stuff - _sort of_).
+
+It's just a simple way to style text.
+
+---
+
+<iframe src="https://dillinger.io/" width="80%" height="1000" />
+
+<Notes>Show off Markdown</Notes>
+
+---
+
+# Now let's use MDX
+
+Here's what the MDX file will look like.
+
+---
+
+<CodeSurfer>
+
+```md title="MDX File Structure"
+---
+title: 'When to Use Static Generation v.s. Server-side Rendering'
+date: '2020-01-02'
+---
+
+We recommend using **Static Generation** (with and without data) whenever possible because your page
+can be built once and served by CDN, which makes it much faster than having a server render the page
+on every request.
+
+You can use Static Generation for many types of pages, including:
+
+- Marketing pages
+- Blog posts
+- E-commerce product listings
+- Help and documentation
+```
+
+```md 1:4 subtitle="The file metadata."
+---
+title: 'When to Use Static Generation v.s. Server-side Rendering'
+date: '2020-01-02'
+---
+
+We recommend using **Static Generation** (with and without data) whenever possible because your page
+can be built once and served by CDN, which makes it much faster than having a server render the page
+on every request.
+
+You can use Static Generation for many types of pages, including:
+
+- Marketing pages
+- Blog posts
+- E-commerce product listings
+- Help and documentation
+```
+
+```md subtitle="The blog content." 5:16
+---
+title: 'When to Use Static Generation v.s. Server-side Rendering'
+date: '2020-01-02'
+---
+
+We recommend using **Static Generation** (with and without data) whenever possible because your page
+can be built once and served by CDN, which makes it much faster than having a server render the page
+on every request.
+
+You can use Static Generation for many types of pages, including:
+
+- Marketing pages
+- Blog posts
+- E-commerce product listings
+- Help and documentation
+```
+
+</CodeSurfer>
+
+---
+
+<!-- TODO: move luxon up (for the blog post page) -->
+
+<CodeSurfer>
+
+```bash title="Getting MDX" subtitle="Install a library to load/parse MDX data."
+npm install --save next-mdx-remote
+```
+
+```bash subtitle="Install graymatter to understand the metadata of a post."
+npm install --save gray-matter
+```
+
+```bash subtitle="Install luxon to handle parsing dates."
+npm install --save luxon
+```
+
+</CodeSurfer>
+
+<Notes>
+
+1. Install code to parse mdx
+2. install code to parse the metadata of a mdx file
+3. install code to parse dates
+
+</Notes>
+
+---
+
+# Let's get to blogging! :writing_hand:
+
+---
+
+<!-- Creating blog page p2 - lib file -->
+
+<!-- TODO: fix
+add
+import { DateTime } from "luxon";
+
+ -->
+
+<CodeSurfer>
+
+```js file=./code/mdx/library.js title="Code to load in MDX and parse the frontmatter."
+
+```
+
+```js file=./code/mdx/library.js 7
+
+```
+
+```js file=./code/mdx/library.js 9:11
+
+```
+
+```js file=./code/mdx/library.js 13:31
+
+```
+
+```js file=./code/mdx/library.js 33:60
+
+```
+
+```js file=./code/mdx/library.js 62:68
+
+```
+
+```js file=./code/mdx/library.js 70:86
+
+```
+
+</CodeSurfer>
+
+---
+
+# Let's update the blog page to fetch an MDX file
+
+---
+
+# [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching)
+
+It's a function run on **build time** that runs in the Node.js environment.
+
+This means:
+
+- It's **not frontend code**, it's backend code
+  - aka, it does not run in the browser
+- It's runs **only once on build** (there are other ways rerun with Next.js)
+- Since it's backend code we can do anything that a backend can do like:
+  - Access the filesystem
+  - Talk to a database
+
+---
+
+<CodeSurfer>
+
+```jsx file=./code/getstaticprops/example.js title="A basic example of getStaticProps"
+
+```
+
+```jsx file=./code/getstaticprops/example.js 1:5 subtitle="Backend code (run on build in a node.js environment)"
+
+```
+
+```jsx file=./code/getstaticprops/example.js 7:14 subtitle="Frontend code (run in the browser)"
+
+```
+
+</CodeSurfer>
+
+---
+
+# Our Use case
+
+We are going to load in the MDX file using the code provided.
+
+---
+
+# Time to create our blog `getStaticProps` function
+
+---
+
+<CodeSurfer>
+
+```jsx file=./code/getstaticprops/base.js title="pages/first.js" subtitle="Rename the file to [slug].js"
+
+```
+
+```jsx file=./code/getstaticprops/basic-static.js subtitle="Add a basic getStaticProps"
+
+```
+
+```jsx file=./code/getstaticprops/full-static.js subtitle="Load in mdx on build."
+
+```
+
+```jsx file=./code/getstaticprops/update-component.js subtitle="Update the component to use props/render MDX"
+
+```
+
+</CodeSurfer>
+
+---
+
+# Sweet!
+
+## But how do we do this for all of our MDX files?
+
+---
+
+# Next.js's Dynamic Routes!
+
+---
+
+- Any route like `/blog/1`, `/blog/abc`, etc. will be matched by `pages/blog/[id].js`. The matched
+  path parameter will be sent as a query parameter (called `id`) to the page.
+
+For example, if a user when to `/blog/first-blog-post` the `query` object look like:
+
+```json
+{ "id": "first-blog-post" }
+```
+
+---
+
+# You can also chain multiple dynamic routes
+
+Meaning you can have files named: `pages/post/[pid]/[comment].js`
+
+If a user when to `/post/reddit-post-id/cool-comment` the `query` object would look like:
+
+```js
+{ "pid": "reddit-post-id", "comment": "cool-comment" }
+```
+
+---
+
+https://nextjs.org/docs/routing/dynamic-routes
+
+---
+
+# `getStaticPaths`
+
+- Only run on backend like `getStaticProps`
+- The `paths` key will tell Next.js what pages need to be generated at **build** time.
+
+---
+
+<CodeSurfer>
+
+```jsx file=./code/getstaticpaths/example.js title="A basic example of getStaticPaths"
+
+```
+
+```jsx file=./code/getstaticpaths/example.js 4:7 subtitle="Tell Next.js what pages to generate."
+
+```
+
+</CodeSurfer>
+
+---
+
+Let's say that function was defined in `pages/blog/[slug].js`
+
+The code in the previous example would tell Next.js to generate the following pages:
+
+`/blog/1`, `/blog/2`, `/blog/3`, and `/blog/4`
+
+---
+
+# Back to the Blog Page
+
+<!-- Creating blog page p3 - page file -->
+
+---
+
+<CodeSurfer>
+
+```js file=./code/getstaticpaths/base.js
+
+```
+
+```js file=./code/getstaticpaths/static-base.js
+
+```
+
+```js file=./code/getstaticpaths/static-full.js
+
+```
+
+```js file=./code/getstaticpaths/update-props.js
+
+```
+
+```js file=./code/getstaticpaths/link-home.js subtitle="Add next link import" 6
+
+```
+
+```js file=./code/getstaticpaths/link-home.js subtitle="Link back home" 63:65
+
+```
+
+</CodeSurfer>
+
+<Notes>
+
+1. base (new file name [slug].js)
+2. add get static path function
+3. update get static props
+4. Final touchs (link back home)
+
+</Notes>
+
+---
+
+Now try creating another mdx file (called `mdx-file-name.mdx`) and then go to
+`localhost:3000/blog/mdx-file-name`
+
+---
+
+# Let's add the blog to the home page
+
+---
+
+<CodeSurfer>
+
+```jsx file=./code/homepage/five.js subtitle="The current home page"
+
+```
+
+```jsx file=./code/homepage/static-props.js subtitle="Add getStaticProps"
+
+```
+
+```jsx file=./code/homepage/props.js subtitle="Grab getStaticProps props."
+
+```
+
+```jsx file=./code/homepage/bloglist.js subtitle="Update imports" 3,5
+
+```
+
+```jsx file=./code/homepage/bloglist.js subtitle="Create blog list component." 51:66
+
+```
+
+</CodeSurfer>
+
+<!--
+
+<iframe
+  src="https://codesandbox.io/embed/nextjs-starter-ktitv?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="nextjs-starter"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+-->
+
+---
+
+# Deploying with Vercel!
+
+<Notes>
+
+1. Create a github account
+2. Create GH Repo
+3. Initialize gh code locally and link to new gh Repo
+4. push code
+5. Create vercel account
+6. Tell vercel to use gh repo
+
+</Notes>
+
+---
+
+# Aside
+
+---
+
+# Styling via [Tailwindcss](https://tailwindcss.com/docs)
+
+---
+
+<CodeSurfer>
+
+```bash title="You DON'T need to run this" subtitle="Install tailwind dependencies"
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+```
+
+```bash subtitle="Initialize tailwind"
+npx tailwindcss init -p
+```
+
+```js subtitle="postcss.config.js"
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+```
+
+```js subtitle="tailwind.config.js"
+module.exports = {
+  purge: [],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+```js subtitle="Purge css used in these files."
+module.exports = {
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+```js 2 subtitle="pages/_app.js"
+import '../styles/globals.css';
+import 'tailwindcss/tailwind.css';
+
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+
+export default MyApp;
+```
+
+</CodeSurfer>
+
+<!-- TODO: tailwindcss prose -->
+
+---
+
+# [Tailwindcss vs. Bootstrap](https://themesberg.com/blog/design/tailwind-css-vs-bootstrap)
+
+## Tailwindcss is:
+
+- More performant/smaller bundle size
+- Utility based
+  - Leads to easier use
+
+> What this means is that instead of writing a lot of CSS you will be **writing a lot of classes**
+> for the HTML elements. In Tailwind CSS you have classes for almost all kinds of margins, padding,
+> backgrounds, font sizes, font families, text colors, shadows and so on.
+
+---
+
+# Future Things we can do:
+
+- We can refactor out to components
+- We can add a favicon ([favyicon](https://favycon.app/))
+- We could add more details about us
+  - Resume
+  - Projects
+- Add [dark mode via tailwindcss](https://tailwindcss.com/docs/dark-mode)
+
+---
+
+# Things to learn to be more comfortable
+
+- JavaScript
+- TypeScript (A absolute time/life saver)
+- Asynchronous JavaScript/TypeScript programming
+  - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous
+  - https://nodejs.dev/learn/javascript-asynchronous-programming-and-callbacks
+  - https://blog.logrocket.com/understanding-asynchronous-javascript/
+
+---
+
+# Frontend Frameworks
+
+## Main Ecosystems
+
+- React.js (My favorite)
+  - Made by Facebook
+  - Not opinionated
+- Angular
+  - Made by Google
+  - Very opinionated
+- Vue.js
+  - Mix of Angular and React.JS
+  - I personally don't know much about it
+- Svelte
+
+---
+
+# React.js Ecosystem
+
+- Learn more about [React.js's features](https://reactjs.org/)
+- [Next.js docs](https://nextjs.org/)
+- [Gatsby](https://www.gatsbyjs.com/) (alternative to Next.js)
+
+---
+
+# Thanks! :wave:
+
+GitHub: [kpfromer](https://github.com/kpfromer)
+
+Website: [kpfromer.com](http://kpfromer.com/)
