@@ -5,17 +5,6 @@ import { theme as myTheme } from './theme';
 
 export const theme = myTheme;
 
-<!--
-
-// export const theme = myTheme;
-
-import { CodeSurfer } from "code-surfer";
-export const theme = myTheme;
-
-
-import { poppins as myTheme } from "@mdx-deck/themes";
--->
-
 # Next.JS - Making a Blog Site
 
 ## :wave: Hello!
@@ -80,6 +69,35 @@ It should print something like:
   - React.js
 - Tailwindcss
 - MDX / Markdown
+
+---
+
+# First, What Is Next.js?
+
+What is it and why should I care
+
+---
+
+# Next.js
+
+It's a mix of a **frontend/backend framework**.
+
+Can think of it as combining React.JS (frontend) with backend features (like express.js).
+
+---
+
+# Next.js
+
+- NextJS is a **framework** that uses React.js
+
+## You get
+
+- server-side rendering
+- static-site generation
+- serverless functions (aka API routes)
+- better SEO
+
+[A good resource to learn more](https://medium.com/frontend-digest/whats-the-difference-between-nextjs-and-create-react-app-11b55650a612#:~:text=While%20CRA%20is%20a%20tool,to%20create%20performant%20web%20applications.)
 
 ---
 
@@ -185,17 +203,43 @@ It should have changed.
 
 ---
 
+# First Let's Install Some Libraries
+
+---
+
+<!-- TODO: move luxon up (for the blog post page) -->
+
+<CodeSurfer>
+
+```bash title="Getting MDX" subtitle="Install a library to load/parse MDX data."
+npm install --save next-mdx-remote
+```
+
+```bash subtitle="Install graymatter to understand the metadata of a post."
+npm install --save gray-matter
+```
+
+```bash subtitle="Install luxon to handle parsing dates."
+npm install --save luxon
+```
+
+</CodeSurfer>
+
+<Notes>
+
+1. Install code to parse mdx
+2. install code to parse the metadata of a mdx file
+3. install code to parse dates
+
+</Notes>
+
+---
+
 # Now we should create another page
 
 Let us build our first blog post!
 
 ---
-
-<!--
-TODO: Create blog post page /page/blog/first.js
-
-Then other code section create a link
--->
 
 <CodeSurfer>
 
@@ -221,11 +265,9 @@ Then other code section create a link
 
 </CodeSurfer>
 
-<!-- TODO: add link back to home page -->
-
 <Notes>
 
-Firstly create the `blog` folder
+First, we will create the `blog` folder
 
 then create the file `blog/first.js`
 
@@ -275,9 +317,7 @@ A more customizable markdown.
 
 # Well what's markdown?
 
-If you have used latex, it's like a much simplier version of that (no math stuff - _sort of_).
-
-It's just a simple way to style text.
+It's similar to LaTeX. AKA another way to style text.
 
 ---
 
@@ -350,34 +390,6 @@ You can use Static Generation for many types of pages, including:
 ```
 
 </CodeSurfer>
-
----
-
-<!-- TODO: move luxon up (for the blog post page) -->
-
-<CodeSurfer>
-
-```bash title="Getting MDX" subtitle="Install a library to load/parse MDX data."
-npm install --save next-mdx-remote
-```
-
-```bash subtitle="Install graymatter to understand the metadata of a post."
-npm install --save gray-matter
-```
-
-```bash subtitle="Install luxon to handle parsing dates."
-npm install --save luxon
-```
-
-</CodeSurfer>
-
-<Notes>
-
-1. Install code to parse mdx
-2. install code to parse the metadata of a mdx file
-3. install code to parse dates
-
-</Notes>
 
 ---
 
@@ -464,7 +476,7 @@ This means:
 
 ---
 
-# Our Use case
+# Our use case
 
 We are going to load in the MDX file using the code provided.
 

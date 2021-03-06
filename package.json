@@ -4,11 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "BROWSER=none mdx-deck deck.mdx",
+    "start": "cross-env BROWSER=none mdx-deck deck.mdx",
     "build": "mdx-deck build deck.mdx",
     "help": "mdx-deck"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "mdx-deck": "^3.0.10",
     "react-syntax-highlighter": "^12.2.1",
     "theme-ui": "^0.2.52"
